@@ -1,0 +1,16 @@
+.container {
+  margin: 0;
+  padding: 0;
+}
+
+svg, canvas {
+  border: 1px solid #000;
+  position: absolute;
+  left: 10;
+  top: 10;
+}
+
+.buttons {
+  position: absolute;
+  top: 420px;
+}
