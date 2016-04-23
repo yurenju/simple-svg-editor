@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
   class MouseControls {
     constructor(app) {
       window.addEventListener('mousemove', evt => {
-        app.highlighted = app.shapes.filter(shape => shape.isPointIn(evt.x, evt.y));
+        app.highlighted = app.shapes.filter(shape => shape.isPointIn(evt.clientX, evt.clientY));
 
         if (app.mousedown) {
           app.highlighted.forEach(shape => {
