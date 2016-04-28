@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   class Shape {
     constructor() {
-      this.id = ("0000" + (Math.random()*Math.pow(36,4) << 0).toString(36)).slice(-4);
+      this.id = ('0000' + (Math.random()*Math.pow(36,4) << 0)
+                .toString(36)).slice(-4);
     }
 
     isPointIn(x, y) {
@@ -34,8 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     toSVG() {
     	let rect = document.createElementNS(NS, 'rect');
-      ['x', 'y', 'width', 'height', 'fill'].forEach(key => rect.setAttribute(key, this[key]));
-      rect.setAttribute('id', this.id);
+      var attributes = ['id', 'x', 'y', 'width', 'height', 'fill'];
+      attributes.forEach(key => rect.setAttribute(key, this[key]));
       return rect;
     }
   }
@@ -76,7 +77,8 @@ document.addEventListener('DOMContentLoaded', function() {
   class MouseControls {
     constructor(app) {
       window.addEventListener('mousemove', evt => {
-        app.highlighted = app.shapes.filter(shape => shape.isPointIn(evt.clientX, evt.clientY));
+        app.highlighted = app.shapes.filter(shape =>
+          shape.isPointIn(evt.clientX, evt.clientY));
 
         if (app.mousedown) {
           app.highlighted.forEach(shape => {
@@ -115,7 +117,6 @@ document.addEventListener('DOMContentLoaded', function() {
       this.controls.push(new KeyControls(this));
 
       this.highlighted = [];
-      this.selected = [];
       this.mousedown = false;
       this.shapes = [];
     }
@@ -160,13 +161,8 @@ document.addEventListener('DOMContentLoaded', function() {
       let element = document.getElementById(shape.id);
       let index = app.shapes.indexOf(shape);
 
-      if (element) {
-        element.remove();
-      }
-
-      if (index >= 0) {
-        this.shapes.splice(index, 1);
-      }
+      if (element) element.remove();
+      if (index >= 0) this.shapes.splice(index, 1);
 
       this.render();
     }
