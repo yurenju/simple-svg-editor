@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   class Rect extends Shape {
-  	constructor(x, y, width, height, fill) {
+    constructor(x, y, width, height, fill) {
       super();
-    	this.x = x;
+      this.x = x;
       this.y = y;
       this.width = width;
       this.height = height;
@@ -30,11 +30,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     getBounds() {
-    	return this;
+      return this;
     }
 
     toSVG() {
-    	let rect = document.createElementNS(NS, 'rect');
+      let rect = document.createElementNS(NS, 'rect');
       var attributes = ['id', 'x', 'y', 'width', 'height', 'fill'];
       attributes.forEach(key => rect.setAttribute(key, this[key]));
       return rect;
@@ -42,9 +42,9 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   class Circle extends Shape {
-  	constructor(x, y, radius, fill) {
+    constructor(x, y, radius, fill) {
       super();
-    	this.x = x;
+      this.x = x;
       this.y = y;
       this.radius = radius;
       this.fill = fill;
@@ -59,11 +59,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     getBounds() {
-    	return new Rect(this.x, this.y, this.width, this.height);
+      return new Rect(this.x, this.y, this.width, this.height);
     }
 
     toSVG() {
-    	let circle = document.createElementNS(NS, 'circle');
+      let circle = document.createElementNS(NS, 'circle');
       circle.setAttribute('cx', this.x + this.radius);
       circle.setAttribute('cy', this.y + this.radius);
       circle.setAttribute('r', this.radius);
